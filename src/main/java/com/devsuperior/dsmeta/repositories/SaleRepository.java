@@ -15,6 +15,7 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
             "FROM tb_sales as sale " +
             "INNER JOIN tb_seller as seller ON seller.id = sale.seller_id " +
             "WHERE sale.date BETWEEN :minDate AND :maxDate " +
-            "GROUP BY seller.name")
+            "GROUP BY seller.name " +
+            "ORDER BY seller.name")
     List<SaleSummaryMinProjection> searchSummary(LocalDate minDate, LocalDate maxDate);
 }
